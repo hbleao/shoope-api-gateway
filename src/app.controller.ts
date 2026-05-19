@@ -2,7 +2,7 @@
 import { Controller, Get } from "@nestjs/common";
 
 import { AppService } from "./app.service";
-import { ProxyService } from "./proxy/service/proxy/proxy.service";
+import { ProxyService } from "./modules/proxy/service/proxy/proxy.service";
 
 @Controller()
 export class AppController {
