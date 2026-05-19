@@ -19,8 +19,19 @@ import { ProxyModule } from "./proxy/proxy.module";
 		}),
 		ThrottlerModule.forRoot([
 			{
+				name: "short",
+				ttl: 1000, // 1 second
+				limit: 10, // 10 request per minute
+			},
+			{
+				name: "medium",
 				ttl: 60000, // 1 minute
 				limit: 100, // request per minute
+			},
+			{
+				name: "long",
+				ttl: 900000, // 15 minutes
+				limit: 1000, // request per minute
 			},
 		]),
 		ProxyModule,
