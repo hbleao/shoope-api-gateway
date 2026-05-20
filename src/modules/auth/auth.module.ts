@@ -1,8 +1,9 @@
 import { HttpModule } from "@nestjs/axios";
 import { Module } from "@nestjs/common";
-import { ConfigModule, type ConfigService } from "@nestjs/config";
+import { ConfigModule, ConfigService } from "@nestjs/config";
 import { JwtModule } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";
+import { AuthController } from "./controllers/auth.controller";
 import { AuthService } from "./service/auth.service";
 
 @Module({
@@ -12,12 +13,13 @@ import { AuthService } from "./service/auth.service";
 		JwtModule.registerAsync({
 			imports: [ConfigModule],
 			useFactory: async (configService: ConfigService) => ({
-				secret: configService.get("JWT_SECRET"),
+				secret: configService.get<string>("JWT_SECRET"),
 				signOptions: { expiresIn: "24h" },
 			}),
-			inject: [ConfigModule],
+			inject: [ConfigService],
 		}),
 	],
+	controllers: [AuthController],
 	providers: [AuthService],
 	exports: [AuthService],
 })
