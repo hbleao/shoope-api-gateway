@@ -67,7 +67,7 @@ export class ProxyService {
 				status: "healthy",
 				data: firstValueHttpRequest.data,
 			};
-		} catch (error) {
+		} catch (error: any) {
 			return {
 				status: "unhealthy",
 				error: error.message,
