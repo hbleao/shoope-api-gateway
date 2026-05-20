@@ -1,0 +1,20 @@
+type(scope): <Resumo curto no imperativo (máx 50 carac)>
+# Ex: feat(auth): implement jwt token strategy
+
+# --------------------------------------------------------------------
+# CORPO: Explique o PORQUÊ desta mudança. O que motivou o ajuste?
+# (Quebre linhas em no máximo 72 caracteres)
+
+
+
+# --------------------------------------------------------------------
+# BULLETS: (Opcional) Detalhes técnicos importantes ou impactos
+# - Adicionei validação de payload com class-validator
+# - Removi regras legadas de ignore do BiomeJS
+
+
+
+# --------------------------------------------------------------------
+# RODAPÉ: (Opcional) Links de Issues, Cards do Jira/ClickUp ou Breaks
+# Refs: #123
+# Breaking Change: <se houver, explique o que quebra>
