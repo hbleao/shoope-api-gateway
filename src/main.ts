@@ -53,9 +53,26 @@ async function bootstrap() {
 
 	const swaggerConfig = new DocumentBuilder()
 		.setTitle("Shoope API Gateway")
-		.setDescription("API Gateway for Shoope microservice")
+		.setDescription(`API Gateway para o sistema de marketplace Shoope`)
+		.setLicense("MIT", "")
 		.setVersion("1.0.0")
-		.addBearerAuth()
+		.addBearerAuth(
+			{
+				type: "http",
+				scheme: "bearer",
+				bearerFormat: "JWT",
+				name: "JWT",
+				description: "Enter JWT token",
+				in: "header",
+			},
+			"JWT-auth",
+		)
+		.addTag("Authentication", "Endpoints de autenticação e autorização")
+		.addTag("Users", "Endpoints de gestão de usuários")
+		.addTag("Products", "Endpoints de gestão de produtos")
+		.addTag("Checkout", "Endpoints de gestão de checkout")
+		.addTag("Payments", "Endpoints de gestão de pagamentos")
+		.addTag("App", "Endpoints de verificação de saúde da aplicação Shoope")
 		.build();
 
 	const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig);

@@ -1,10 +1,11 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
-import type { LoginDto } from "../dtos/login";
+import { LoginDto } from "../dtos/login";
 import { AuthService } from "../service/auth.service";
 import { Throttle } from "@nestjs/throttler";
+import { RegisterDto } from "../dtos/register";
 
-@ApiTags("Authorization")
+@ApiTags("Authentication")
 @Controller("auth")
 export class AuthController {
 	private readonly authService: AuthService;
@@ -29,7 +30,7 @@ export class AuthController {
 	@ApiResponse({ status: 200, description: "Registration successful" })
 	@ApiResponse({ status: 400, description: "Invalid registration data" })
 	@Throttle({ short: { limit: 5, ttl: 60000 } })
-	async register(@Body() registerDto: any) {
+	async register(@Body() registerDto: RegisterDto) {
 		return this.authService.register(registerDto);
 	}
 }
